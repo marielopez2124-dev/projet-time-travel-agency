@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TimeTravel Agency — Voyagez à travers les âges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       VARIABLES & RESET
+    ══════════════════════════════════════════ */
+    :root {
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --gold-dark:   #8a6820;
+      --black:       #000000;
+      --dark:        #0a0a0a;
+      --dark-card:   #111111;
+      --text:        #e8dcc8;
+      --text-muted:  #8a7d6b;
+      --border:      rgba(201,168,76,0.3);
+      --shadow-gold: 0 0 30px rgba(201,168,76,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════════
+       1. FOND GLOBAL — ROUE STEAMPUNK
+       La roue SVG est injectée en ::before sur body
+       Opacité 0.18 pour ne pas gêner la lecture
+    ══════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+
+      /*
+       * ROUE CRANTÉE STEAMPUNK — SVG encodé en data-URI
+       * Pour remplacer par une image externe, substitue l'URL :
+       *   background-image: url('https://votre-domaine.com/roue-steampunk.png');
+       */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23c9a84c'/%3E%3Cstop offset='100%25' stop-color='%238a6820'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg fill='none' stroke='url(%23g)' stroke-width='3'%3E%3C!-- Anneau externe --%3E%3Ccircle cx='250' cy='250' r='230' stroke-width='8'/%3E%3Ccircle cx='250' cy='250' r='215' stroke-width='2'/%3E%3C!-- Dents externes (36 dents) --%3E%3C!-- Généré dynamiquement via transform --%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(0 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(10 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(20 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(30 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(40 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(50 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(60 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(70 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(80 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(90 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(100 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(110 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(120 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(130 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(140 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(150 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(160 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(170 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(180 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(190 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(200 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(210 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(220 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(230 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(240 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(250 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(260 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(270 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(280 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(290 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(300 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(310 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(320 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(330 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(340 250 250)'/%3E%3Crect x='244' y='12' width='12' height='28' rx='2' fill='url(%23g)' transform='rotate(350 250 250)'/%3E%3C!-- Rayons internes (12 rayons) --%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(0 250 250)'/%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(30 250 250)'/%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(60 250 250)'/%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(90 250 250)'/%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(120 250 250)'/%3E%3Cline x1='250' y1='60' x2='250' y2='440' stroke='url(%23g)' stroke-width='2' transform='rotate(150 250 250)'/%3E%3C!-- Anneaux intermédiaires --%3E%3Ccircle cx='250' cy='250' r='160' stroke-width='2'/%3E%3Ccircle cx='250' cy='250' r='90' stroke-width='4'/%3E%3Ccircle cx='250' cy='250' r='40' stroke-width='6'/%3E%3C!-- Centre --%3E%3Ccircle cx='250' cy='250' r='18' fill='url(%23g)' stroke='none'/%3E%3Ccircle cx='250' cy='250' r='10' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      opacity: 0.18;
+
+      /* Animation lente de rotation */
+      animation: gearRotate 120s linear infinite;
+    }
+
+    @keyframes gearRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Tous les enfants directs du body au-dessus du fond */
+    body > * { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════════
+       TYPOGRAPHIE GLOBALE
+    ══════════════════════════════════════════ */
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+
+    /* ══════════════════════════════════════════
+       NAVIGATION
+    ══════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 60px rgba(201,168,76,0.3);
+    }
+
+    .hero-subtitle {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      padding: 0.9rem 2.4rem;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+
+    .btn-secondary {
+      padding: 0.9rem 2.4rem;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════════
+       SECTIONS COMMUNES
+    ══════════════════════════════════════════ */
+    section {
+      padding: 7rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-intro {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ══════════════════════════════════════════
+       À PROPOS
+    ══════════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-stat {
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--dark-card);
+      text-align: center;
+    }
+
+    .about-stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .about-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       2. DESTINATIONS — CARTES AVEC IMAGES
+    ══════════════════════════════════════════ */
+    .destinations-section {
+      background: rgba(0,0,0,0.6);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      max-width: 100%;
+      padding: 7rem 2rem;
+    }
+
+    .destinations-section > .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    /* ── Carte destination ── */
+    .destination-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--dark-card);
+      transition: transform 0.4s, box-shadow 0.4s;
+      cursor: pointer;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-gold), 0 20px 60px rgba(0,0,0,0.5);
+      border-color: var(--gold);
+    }
+
+    /*
+     * ── IMAGE D'ÉPOQUE ──
+     * Classe : .destination-img
+     * Taille fixe : 100% largeur, 220px hauteur
+     * Bordure dorée en bas
+     * Effet hover : légère luminosité augmentée
+     *
+     * Pour remplacer le placeholder, modifiez l'attribut src de chaque <img> :
+     *   Paris 1889    → src="VOTRE_URL_PARIS"
+     *   Crétacé       → src="VOTRE_URL_CRETACE"
+     *   Florence 1504 → src="VOTRE_URL_FLORENCE"
+     */
+    .destination-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold-dark);
+    }
+
+    .destination-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.85) sepia(0.2);
+      transition: filter 0.4s, transform 0.4s;
+    }
+
+    .destination-card:hover .destination-img {
+      filter: brightness(1) sepia(0.1);
+      transform: scale(1.04);
+    }
+
+    /* Overlay doré sur l'image */
+    .destination-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        transparent 50%,
+        rgba(0,0,0,0.65) 100%);
+      pointer-events: none;
+    }
+
+    /* Badge époque sur l'image */
+    .destination-era-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      z-index: 2;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--gold-dark);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    /* Placeholder si pas d'image */
+    .destination-img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1408 0%, #0d0a04 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .destination-img-placeholder span {
+      font-size: 2.5rem;
+    }
+
+    .destination-img-placeholder p {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    /* Contenu texte de la carte */
+    .destination-body { padding: 1.8rem; }
+
+    .destination-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .destination-period {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .destination-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .destination-price {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .destination-cta {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-dark);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .destination-cta:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+    /* ══════════════════════════════════════════
+       QUIZ
+    ══════════════════════════════════════════ */
+    .quiz-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 7rem 2rem;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .quiz-why {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--dark-card);
+    }
+
+    .quiz-why h4 {
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-why p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+
+    .quiz-container {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--dark-card);
+      padding: 2.5rem;
+    }
+
+    .quiz-question {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .quiz-option:hover { border-color: var(--gold); color: var(--text); background: rgba(201,168,76,0.05); }
+    .quiz-option.selected { border-color: var(--gold); color: var(--gold-light); background: rgba(201,168,76,0.08); }
+
+    .quiz-option-letter {
+      width: 28px; height: 28px;
+      border: 1px solid var(--gold-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .quiz-progress {
+      height: 2px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .quiz-progress-bar {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    .quiz-nav { display: flex; justify-content: flex-end; }
+
+    /* ══════════════════════════════════════════
+       RÉSERVATION
+    ══════════════════════════════════════════ */
+    .reservation-section {
+      background: rgba(0,0,0,0.5);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      max-width: 100%;
+      padding: 7rem 2rem;
+    }
+
+    .reservation-section > .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reservation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .reservation-inclus {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--dark-card);
+    }
+
+    .reservation-inclus h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .reservation-inclus ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .reservation-inclus li { font-size: 0.88rem; color: var(--text-muted); display: flex; gap: 0.8rem; }
+    .reservation-inclus li::before { content: '✦'; color: var(--gold); }
+
+    .form-group { margin-bottom: 1.4rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    select option { background: #111; }
+    textarea { resize: vertical; min-height: 100px; }
+
+    .form-error {
+      font-size: 0.72rem;
+      color: #e57373;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    .form-checkbox { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.8rem; }
+    .form-checkbox input { width: auto; flex-shrink: 0; margin-top: 4px; accent-color: var(--gold); }
+    .form-checkbox label {
+      font-size: 0.8rem;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      border: 1px solid var(--gold-dark);
+      border-radius: 4px;
+      background: rgba(201,168,76,0.04);
+    }
+
+    .form-success .success-icon { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+    .form-success h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+    .form-success p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ══════════════════════════════════════════
+       TÉMOIGNAGES
+    ══════════════════════════════════════════ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      padding: 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--dark-card);
+      transition: border-color 0.3s;
+    }
+    .testimonial-card:hover { border-color: var(--gold-dark); }
+
+    .testimonial-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 1.2rem; letter-spacing: 0.1em; }
+
+    .testimonial-text {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--black);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .testimonial-name { font-size: 0.85rem; color: var(--text); }
+    .testimonial-trip { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em; }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.8);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+    .footer-col h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col li a { font-size: 0.82rem; color: var(--text-muted); transition: color 0.3s; }
+    .footer-col li a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+    .footer-legal { display: flex; gap: 2rem; }
+    .footer-legal a { font-size: 0.72rem; color: var(--text-muted); transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       MODAL DESTINATION
+    ══════════════════════════════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    /* Image dans la modal */
+    .modal-img-wrapper {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold-dark);
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+    }
+
+    .modal-body { padding: 2.5rem; }
+
+    .modal-title { font-size: 1.6rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .modal-period { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1.5rem; }
+
+    .modal-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
+
+    .modal-experiences h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .modal-experiences ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+    .modal-experiences li { font-size: 0.88rem; color: var(--text-muted); display: flex; gap: 0.8rem; }
+    .modal-experiences li::before { content: '◆'; color: var(--gold); font-size: 0.5rem; margin-top: 5px; }
+
+    .modal-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    .modal-price { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.3s;
+      position: absolute;
+      top: 1rem; right: 1rem;
+    }
+    .modal-close:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       CHATBOT
+    ══════════════════════════════════════════ */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 1500;
+      width: 54px; height: 54px;
+      background: var(--gold);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+      transition: all 0.3s;
+    }
+    .chatbot-btn:hover { transform: scale(1.08); background: var(--gold-light); }
+
+    .chatbot-window {
+      display: none;
+      position: fixed;
+      bottom: 6rem; right: 2rem;
+      z-index: 1500;
+      width: 340px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--dark-card);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+    .chatbot-window.open { display: flex; flex-direction: column; }
+
+    .chatbot-header {
+      padding: 1rem 1.2rem;
+      background: rgba(201,168,76,0.08);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .chatbot-avatar {
+      width: 32px; height: 32px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .chatbot-name { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-light); }
+    .chatbot-status { font-size: 0.68rem; color: #6dbf6d; letter-spacing: 0.1em; }
+
+    .chatbot-messages {
+      flex: 1;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .chatbot-msg {
+      max-width: 80%;
+      padding: 0.7rem 1rem;
+      border-radius: 4px;
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+
+    .chatbot-msg.bot {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      color: var(--text);
+    }
+
+    .chatbot-msg.user {
+      background: rgba(201,168,76,0.15);
+      align-self: flex-end;
+      color: var(--gold-light);
+    }
+
+    .chatbot-quick { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.8rem 1.2rem; border-top: 1px solid var(--border); }
+
+    .chatbot-quick-btn {
+      font-size: 0.68rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--text-muted);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .chatbot-quick-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .chatbot-input-row {
+      display: flex;
+      border-top: 1px solid var(--border);
+    }
+
+    .chatbot-input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .chatbot-send {
+      padding: 0 1rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .chatbot-send:hover { color: var(--gold-light); }
+
+    /* ══════════════════════════════════════════
+       SCROLL INDICATOR
+    ══════════════════════════════════════════ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+
+    .scroll-indicator-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ══════════════════════════════════════════
+       DIVIDER ORNEMENT
+    ══════════════════════════════════════════ */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 0 auto 3.5rem;
+      max-width: 400px;
+    }
+
+    .ornament-divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .ornament-divider-symbol {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .destinations-grid,
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-grid,
+      .quiz-grid,
+      .reservation-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-logo">TimeTravel Agency</div>
+    <ul class="nav-links">
+      <li><a href="#about">L'Agence</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#quiz">Recommandation</a></li>
+      <li><a href="#reservation">Réserver</a></li>
+    </ul>
+    <a href="#reservation" class="nav-cta">Réserver</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <span class="hero-badge">Fondée en 2031 · Paris, France</span>
+    <h1>Voyagez à travers<br>les âges</h1>
+    <p class="hero-subtitle">La seule agence au monde qui vous permet de traverser les époques. Vivez l'histoire, non plus à travers les livres, mais en personne.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">Explorer les destinations</button>
+      <button class="btn-secondary" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">Trouver mon voyage</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Époques</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4 842</div>
+        <div class="hero-stat-label">Voyageurs</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Retour garanti</div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      Défiler
+      <div class="scroll-indicator-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       À PROPOS
+  ══════════════════════════════════════════ -->
+  <section id="about">
+    <span class="section-label">Notre histoire</span>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">L'agence qui a réécrit l'histoire</h2>
+        <p>Née du rêve fou du Docteur Éléonore Vasseur, physicienne et historienne, TimeTravel Agency a ouvert ses portes en 2031 après quinze ans de recherches sur la mécanique quantique temporelle.</p>
+        <p>Nos voyages sont méticuleusement préparés pour garantir votre sécurité et l'authenticité de votre expérience. Chaque destination a été sélectionnée pour son potentiel émotionnel et culturel exceptionnel.</p>
+        <p>Notre promesse : vous ramener à l'époque que vous avez quittée, enrichi d'une expérience que nul autre être humain vivant n'a vécue.</p>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat">
+          <span class="about-stat-num">15</span>
+          <span class="about-stat-label">Années de R&amp;D</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-num">12</span>
+          <span class="about-stat-label">Chronophysiciens</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-num">0</span>
+          <span class="about-stat-label">Incidents majeurs</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-num">XII</span>
+          <span class="about-stat-label">Chronomoteur Vasseur VII</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DESTINATIONS
+       ── Pour insérer vos images, remplacez les
+       attributs src des balises <img> ci-dessous
+       par vos propres URLs ou chemins locaux.
+       Ex. :  src="images/paris-1889.jpg"
+              src="https://images.unsplash.com/photo-XXXXXXX"
+  ══════════════════════════════════════════ -->
+  <div class="destinations-section" id="destinations">
+    <div class="section-inner">
+      <span class="section-label">Destinations temporelles</span>
+      <h2 class="section-title">Choisissez votre époque</h2>
+      <p class="section-intro">Trois destinations soigneusement sélectionnées pour leur richesse culturelle, historique et naturelle.</p>
+
+      <div class="destinations-grid">
+
+        <!-- ── DESTINATION 1 : PARIS 1889 ── -->
+        <div class="destination-card" onclick="openModal('paris')">
+          <div class="destination-img-wrapper">
+            <span class="destination-era-badge">Belle Époque</span>
+
+            <!--
+              IMAGE PARIS 1889
+              Remplacez le src par votre propre image.
+              Exemple Unsplash (libre de droits) :
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop"
+              ou laissez le placeholder en commentant la ligne <img> et décommentant le bloc .destination-img-placeholder
+            -->
+            <img
+              class="destination-img"
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop"
+              alt="Paris 1889 — Tour Eiffel, Belle Époque"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <!-- Placeholder de secours (affiché si l'image ne charge pas) -->
+            <div class="destination-img-placeholder" style="display:none;">
+              <span>🗼</span>
+              <p>Votre image ici</p>
+            </div>
+
+          </div>
+          <div class="destination-body">
+            <div class="destination-title">Paris 1889</div>
+            <div class="destination-period">Belle Époque · Inauguration de la Tour Eiffel</div>
+            <p class="destination-desc">Traversez les rues pavées de Paris à l'heure de l'Exposition Universelle. Touchez les rivets de la Tour Eiffel encore chauds et respirez l'effervescence d'un siècle nouveau.</p>
+            <div class="destination-price">89 900 €</div>
+            <a class="destination-cta">Découvrir →</a>
+          </div>
+        </div>
+
+        <!-- ── DESTINATION 2 : CRÉTACÉ ── -->
+        <div class="destination-card" onclick="openModal('cretace')">
+          <div class="destination-img-wrapper">
+            <span class="destination-era-badge">Préhistoire</span>
+
+            <!--
+              IMAGE CRÉTACÉ
+              Exemple Unsplash :
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop"
+            -->
+            <img
+              class="destination-img"
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop"
+              alt="Crétacé -65 Ma — Préhistoire, dinosaures"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="destination-img-placeholder" style="display:none;">
+              <span>🦕</span>
+              <p>Votre image ici</p>
+            </div>
+
+          </div>
+          <div class="destination-body">
+            <div class="destination-title">Crétacé –65 Ma</div>
+            <div class="destination-period">Mésozoïque · Ère des dinosaures</div>
+            <p class="destination-desc">Témoin d'un monde encore intact, avant la grande extinction. Observez à distance sécurisée des créatures que seul notre chronomoteur peut vous permettre de voir.</p>
+            <div class="destination-price">149 900 €</div>
+            <a class="destination-cta">Découvrir →</a>
+          </div>
+        </div>
+
+        <!-- ── DESTINATION 3 : FLORENCE 1504 ── -->
+        <div class="destination-card" onclick="openModal('florence')">
+          <div class="destination-img-wrapper">
+            <span class="destination-era-badge">Renaissance</span>
+
+            <!--
+              IMAGE FLORENCE 1504
+              Exemple Unsplash :
+              src="https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&auto=format&fit=crop"
+            -->
+            <img
+              class="destination-img"
+              src="https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&auto=format&fit=crop"
+              alt="Florence 1504 — Renaissance italienne"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="destination-img-placeholder" style="display:none;">
+              <span>🎨</span>
+              <p>Votre image ici</p>
+            </div>
+
+          </div>
+          <div class="destination-body">
+            <div class="destination-title">Florence 1504</div>
+            <div class="destination-period">Renaissance · Âge d'or des arts</div>
+            <p class="destination-desc">Michel-Ange travaillait sur la Chapelle Sixtine. Léonard de Vinci achevait ses derniers carnets. Assistez à la création d'une civilisation à son apogée.</p>
+            <div class="destination-price">119 900 €</div>
+            <a class="destination-cta">Découvrir →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       QUIZ
+  ══════════════════════════════════════════ -->
+  <section class="quiz-section" id="quiz">
+    <span class="section-label">Intelligence Temporelle</span>
+    <h2 class="section-title">Quelle époque vous correspond ?</h2>
+
+    <div class="quiz-grid">
+      <div class="quiz-why">
+        <h4>Pourquoi ce quiz ?</h4>
+        <p>Chaque époque est une expérience radicalement différente. Notre système de recommandation chrono-analytique analyse votre profil émotionnel et vos préférences culturelles pour identifier l'époque qui vous correspond le mieux.</p>
+      </div>
+
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar" style="width:0%"></div></div>
+        <div id="quizContent">
+          <p class="quiz-question" id="quizQuestion">Qu'est-ce qui vous attire le plus dans un voyage ?</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-nav">
+            <button class="btn-primary" onclick="nextQuestion()">Suivant →</button>
+          </div>
+        </div>
+        <div id="quizResult" style="display:none; text-align:center; padding:1rem 0;">
+          <p class="section-label" style="margin-bottom:1rem;">Votre époque idéale</p>
+          <h3 id="quizResultTitle" style="font-size:1.6rem; margin-bottom:1rem;"></h3>
+          <p id="quizResultDesc" style="color:var(--text-muted); font-size:0.9rem; margin-bottom:2rem;"></p>
+          <button class="btn-primary" onclick="resetQuiz()">Recommencer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       RÉSERVATION
+  ══════════════════════════════════════════ -->
+  <div class="reservation-section" id="reservation">
+    <div class="section-inner">
+      <div class="reservation-grid">
+        <div>
+          <span class="section-label">Réservation</span>
+          <h2 class="section-title">Réservez votre voyage</h2>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8; margin-bottom:2rem;">Complétez le formulaire. Notre équipe vous contactera dans les 48h pour confirmer votre réservation et vous transmettre les documents de préparation.</p>
+
+          <div class="reservation-inclus">
+            <h4>Inclus dans chaque voyage</h4>
+            <ul>
+              <li>Combinaison temporelle</li>
+              <li>Guide chrono-historique</li>
+              <li>Assurance paradoxale</li>
+              <li>Débriefing psychologique</li>
+              <li>Photographies mémorielles</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <form id="reservationForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" placeholder="Éléonore" required />
+                <span class="form-error" id="prenomError">Champ requis</span>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" placeholder="Vasseur" required />
+                <span class="form-error" id="nomError">Champ requis</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" placeholder="vous@domaine.com" required />
+              <span class="form-error" id="emailError">Email invalide</span>
+            </div>
+            <div class="form-group">
+              <label for="destination">Destination *</label>
+              <select id="destination" required>
+                <option value="" disabled selected>Choisissez votre époque…</option>
+                <option value="paris">Paris 1889 — Belle Époque · 89 900 €</option>
+                <option value="cretace">Crétacé –65 Ma — Préhistoire · 149 900 €</option>
+                <option value="florence">Florence 1504 — Renaissance · 119 900 €</option>
+              </select>
+              <span class="form-error" id="destinationError">Champ requis</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="depart">Date de départ souhaitée</label>
+                <input type="date" id="depart" />
+              </div>
+              <div class="form-group">
+                <label for="voyageurs">Nombre de voyageurs *</label>
+                <select id="voyageurs" required>
+                  <option value="" disabled selected>Sélectionner…</option>
+                  <option value="1">1 voyageur</option>
+                  <option value="2">2 voyageurs</option>
+                  <option value="3">3 voyageurs</option>
+                  <option value="4">4 voyageurs (groupe)</option>
+                </select>
+                <span class="form-error" id="voyageursError">Champ requis</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message & demandes spéciales</label>
+              <textarea id="message" placeholder="Toute information utile…"></textarea>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="cgu" required />
+              <label for="cgu">J'accepte les Conditions Générales de Voyage Temporel et la Charte du Paradoxe, et certifie avoir pris connaissance des risques inhérents au voyage dans le temps.</label>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%">Envoyer ma demande de réservation →</button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">⧗</div>
+            <h3>Demande reçue !</h3>
+            <p>Votre demande a été transmise à notre équipe de chronophysiciens. Vous recevrez une confirmation sous 48 heures.<br><br><em style="color:var(--gold)">Préparez vos affaires — l'histoire vous attend.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TÉMOIGNAGES
+  ══════════════════════════════════════════ -->
+  <section>
+    <span class="section-label">Témoignages</span>
+    <div class="ornament-divider">
+      <div class="ornament-divider-line"></div>
+      <div class="ornament-divider-symbol">⚙</div>
+      <div class="ornament-divider-line"></div>
+    </div>
+    <h2 class="section-title" style="text-align:center; margin-bottom:3rem;">Ils ont traversé le temps</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Voir la Tour Eiffel fraîchement inaugurée, toucher ses rivets encore chauds, entendre la foule de 1889… Aucun livre, aucun documentaire ne peut approcher cette expérience.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MB</div>
+          <div>
+            <div class="testimonial-name">Marie-Bernadette Aumont</div>
+            <div class="testimonial-trip">Paris 1889 · Voyage en solo</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">J'ai vu un Diplodocus boire dans une rivière à dix mètres de moi. Les larmes ont coulé toutes seules. Je recommande à tout paléontologue en manque de souffle.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PL</div>
+          <div>
+            <div class="testimonial-name">Prof. Pierre Leconte</div>
+            <div class="testimonial-trip">Crétacé · Voyage scientifique</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">Michel-Ange travaillait sur la Chapelle Sixtine. J'ai assisté à la création d'une œuvre immortelle. Je suis rentrée différente, convaincue de la magie de l'art.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SF</div>
+          <div>
+            <div class="testimonial-name">Sophie Fradelot</div>
+            <div class="testimonial-trip">Florence 1504 · Couple</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">TimeTravel Agency</div>
+          <p class="footer-desc">La première agence de voyages temporels au monde. Certifiée ISO 9001-T (Temporal) et membre fondateur du Conseil International de Chronotourisme Responsable.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="#">Paris 1889</a></li>
+            <li><a href="#">Crétacé –65 Ma</a></li>
+            <li><a href="#">Florence 1504</a></li>
+            <li><a href="#">À venir…</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Voyages solo</a></li>
+            <li><a href="#">Voyages en groupe</a></li>
+            <li><a href="#">Expéditions scientifiques</a></li>
+            <li><a href="#">Honeymoon temporel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
+            <li><a href="mailto:contact@timetravel.agency">contact@timetravel.agency</a></li>
+            <li><a href="#">12 Rue du Temps, Paris</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2031 TimeTravel Agency · Tous droits réservés dans toutes les lignes temporelles</span>
+        <div class="footer-legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">Charte du Paradoxe</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       MODAL DESTINATIONS
+  ══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-img-wrapper">
+        <img class="modal-img" id="modalImg" src="" alt="" />
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-period" id="modalPeriod"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-experiences">
+          <h4>Ce que vous vivrez</h4>
+          <ul id="modalExperiences"></ul>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-price" id="modalPrice"></div>
+          <button class="btn-primary" onclick="closeModal(); document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Réserver cette destination →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CHATBOT CHRONOS
+  ══════════════════════════════════════════ -->
+  <button class="chatbot-btn" onclick="toggleChat()" title="Chronos — Guide temporel">🕰</button>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">⚙</div>
+      <div>
+        <div class="chatbot-name">Chronos</div>
+        <div class="chatbot-status">● Guide temporel disponible</div>
+      </div>
+      <button onclick="toggleChat()" style="margin-left:auto; background:none; border:none; color:var(--text-muted); cursor:pointer;">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chatbot-msg bot">Bonjour ! Je suis Chronos, votre guide temporel. Quelle époque vous intrigue le plus ?</div>
+    </div>
+    <div class="chatbot-quick" id="chatQuick">
+      <button class="chatbot-quick-btn" onclick="sendQuick('Prix des voyages')">Prix des voyages</button>
+      <button class="chatbot-quick-btn" onclick="sendQuick('Destination romantique ?')">Destination romantique ?</button>
+      <button class="chatbot-quick-btn" onclick="sendQuick('C\'est dangereux ?')">C'est dangereux ?</button>
+    </div>
+    <div class="chatbot-input-row">
+      <input class="chatbot-input" id="chatInput" placeholder="Votre question…" onkeydown="if(event.key==='Enter') sendChat()" />
+      <button class="chatbot-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════ -->
+  <script>
+    /* ─── DONNÉES DES DESTINATIONS ─── */
+    const destinations = {
+      paris: {
+        title: 'Paris 1889',
+        period: 'Belle Époque · Exposition Universelle',
+        /*
+         * Pour remplacer l'image de la modal Paris,
+         * modifiez le src ci-dessous :
+         */
+        img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&auto=format&fit=crop',
+        imgAlt: 'Tour Eiffel, Paris 1889',
+        desc: 'Plongez dans le Paris de l\'Exposition Universelle. La Tour Eiffel vient d\'être inaugurée, les Galeries Lafayette ouvrent leurs portes, et l\'esprit de la Belle Époque électrise chaque rue.',
+        experiences: [
+          'Assister à l\'inauguration de la Tour Eiffel',
+          'Se promener sur le Champ-de-Mars en 1889',
+          'Dîner dans un grand restaurant de l\'époque',
+          'Observer les premières automobiles dans Paris',
+        ],
+        price: '89 900 €',
+      },
+      cretace: {
+        title: 'Crétacé –65 Ma',
+        period: 'Mésozoïque · Ère des dinosaures',
+        /*
+         * Image Crétacé — remplacez par votre URL :
+         */
+        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop',
+        imgAlt: 'Paysage préhistorique, Crétacé',
+        desc: 'Soixante-cinq millions d\'années avant notre ère, la Terre était peuplée de créatures d\'une grandeur inimaginable. Observez les dinosaures dans leur habitat naturel, en toute sécurité grâce à notre bouclier temporel.',
+        experiences: [
+          'Observer un Diplodocus en liberté',
+          'Traverser une forêt primitive de fougères géantes',
+          'Photographier un T-Rex à distance sécurisée',
+          'Assister au coucher du soleil crétacé',
+        ],
+        price: '149 900 €',
+      },
+      florence: {
+        title: 'Florence 1504',
+        period: 'Renaissance · Âge d\'or des arts',
+        /*
+         * Image Florence — remplacez par votre URL :
+         */
+        img: 'https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&auto=format&fit=crop',
+        imgAlt: 'Florence, Renaissance italienne',
+        desc: 'Florence en 1504 est le centre du monde. Michel-Ange cisèle, Léonard observe, Botticelli peint. Chaque ruelle de cette ville est un musée vivant que nul autre voyageur n\'a jamais traversé.',
+        experiences: [
+          'Assister au travail de Michel-Ange dans son atelier',
+          'Visiter les Offices du temps des Médicis',
+          'Écouter de la musique de la Renaissance en live',
+          'Rencontrer (à distance) Léonard de Vinci',
+        ],
+        price: '119 900 €',
+      },
+    };
+
+    /* ─── MODAL ─── */
+    function openModal(id) {
+      const d = destinations[id];
+      if (!d) return;
+      document.getElementById('modalImg').src = d.img;
+      document.getElementById('modalImg').alt = d.imgAlt;
+      document.getElementById('modalTitle').textContent = d.title;
+      document.getElementById('modalPeriod').textContent = d.period;
+      document.getElementById('modalDesc').textContent = d.desc;
+      document.getElementById('modalPrice').textContent = d.price;
+      const ul = document.getElementById('modalExperiences');
+      ul.innerHTML = d.experiences.map(e => `<li>${e}</li>`).join('');
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    /* ─── QUIZ ─── */
+    const quizData = [
+      {
+        question: "Qu'est-ce qui vous attire le plus dans un voyage ?",
+        options: ["La nature sauvage et primitive", "L'effervescence culturelle et artistique", "L'élégance d'une époque révolue"],
+        scores: [
+          { cretace: 3, florence: 0, paris: 0 },
+          { cretace: 0, florence: 3, paris: 1 },
+          { cretace: 0, florence: 1, paris: 3 },
+        ],
+      },
+      {
+        question: "Votre idéal de voyage, c'est…",
+        options: ["Une expédition aventureuse, frissons garantis", "Une immersion culturelle et intellectuelle", "Une promenade raffinée parmi les monuments"],
+        scores: [
+          { cretace: 3, florence: 1, paris: 0 },
+          { cretace: 0, florence: 3, paris: 1 },
+          { cretace: 0, florence: 1, paris: 3 },
+        ],
+      },
+      {
+        question: "Votre plus grande curiosité ?",
+        options: ["Les origines de la vie sur Terre", "La naissance des grandes œuvres d'art", "L'invention du monde moderne"],
+        scores: [
+          { cretace: 3, florence: 0, paris: 0 },
+          { cretace: 0, florence: 3, paris: 0 },
+          { cretace: 0, florence: 0, paris: 3 },
+        ],
+      },
+    ];
+
+    let quizIndex = 0;
+    let quizSelected = null;
+    const quizScores = { paris: 0, florence: 0, cretace: 0 };
+
+    function renderQuestion() {
+      const q = quizData[quizIndex];
+      document.getElementById('quizQuestion').textContent = q.question;
+      document.getElementById('quizProgressBar').style.width = `${(quizIndex / quizData.length) * 100}%`;
+      const letters = ['A', 'B', 'C'];
+      document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) =>
+        `<div class="quiz-option" onclick="selectOption(${i})">
+          <span class="quiz-option-letter">${letters[i]}</span>
+          ${opt}
+        </div>`
+      ).join('');
+      quizSelected = null;
+    }
+
+    function selectOption(i) {
+      quizSelected = i;
+      document.querySelectorAll('.quiz-option').forEach((el, idx) =>
+        el.classList.toggle('selected', idx === i)
+      );
+    }
+
+    function nextQuestion() {
+      if (quizSelected === null) return;
+      const s = quizData[quizIndex].scores[quizSelected];
+      Object.keys(s).forEach(k => quizScores[k] += s[k]);
+      quizIndex++;
+      if (quizIndex < quizData.length) {
+        renderQuestion();
+      } else {
+        showQuizResult();
+      }
+    }
+
+    function showQuizResult() {
+      const best = Object.entries(quizScores).sort((a, b) => b[1] - a[1])[0][0];
+      const d = destinations[best];
+      document.getElementById('quizContent').style.display = 'none';
+      document.getElementById('quizResult').style.display = 'block';
+      document.getElementById('quizProgressBar').style.width = '100%';
+      document.getElementById('quizResultTitle').textContent = d.title;
+      document.getElementById('quizResultDesc').textContent = d.desc;
+    }
+
+    function resetQuiz() {
+      quizIndex = 0; quizSelected = null;
+      Object.keys(quizScores).forEach(k => quizScores[k] = 0);
+      document.getElementById('quizContent').style.display = 'block';
+      document.getElementById('quizResult').style.display = 'none';
+      renderQuestion();
+    }
+
+    renderQuestion();
+
+    /* ─── FORMULAIRE ─── */
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      ['prenom', 'nom', 'destination', 'voyageurs'].forEach(id => {
+        const el = document.getElementById(id);
+        const err = document.getElementById(id + 'Error');
+        if (!el.value) {
+          if (err) err.style.display = 'block';
+          valid = false;
+        } else {
+          if (err) err.style.display = 'none';
+        }
+      });
+
+      const emailEl = document.getElementById('email');
+      const emailErr = document.getElementById('emailError');
+      if (!emailEl.value || !/^[^@]+@[^@]+\.[^@]+$/.test(emailEl.value)) {
+        emailErr.style.display = 'block';
+        valid = false;
+      } else {
+        emailErr.style.display = 'none';
+      }
+
+      if (valid) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    });
+
+    /* ─── CHATBOT ─── */
+    const chatResponses = {
+      'prix des voyages': 'Nos tarifs : Paris 1889 à 89 900 €, Florence 1504 à 119 900 € et le Crétacé à 149 900 €. Chaque voyage inclut combinaison temporelle, guide et assurance paradoxale.',
+      'destination romantique ?': 'Paris 1889 est notre destination coup de cœur pour les couples ! L\'Exposition Universelle, les cafés de Montmartre… Florence 1504 est également magnifique pour les amoureux des arts.',
+      "c'est dangereux ?": 'La sécurité est notre priorité absolue. Notre bouclier temporel vous protège à tout moment. Notre bilan : 0 incident majeur en 15 ans d\'opérations.',
+    };
+
+    function toggleChat() {
+      document.getElementById('chatbotWindow').classList.toggle('open');
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+      addMessage(msg, 'user');
+      input.value = '';
+      const key = msg.toLowerCase();
+      const reply = Object.keys(chatResponses).find(k => key.includes(k.split(' ')[0]))
+        ? chatResponses[Object.keys(chatResponses).find(k => key.includes(k.split(' ')[0]))]
+        : 'Excellente question ! Notre équipe est disponible au +33 1 23 45 67 89 pour répondre à toutes vos interrogations temporelles.';
+      setTimeout(() => addMessage(reply, 'bot'), 600);
+    }
+
+    function sendQuick(text) {
+      document.getElementById('chatInput').value = text;
+      sendChat();
+    }
+
+    function addMessage(text, type) {
+      const msgs = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = `chatbot-msg ${type}`;
+      div.textContent = text;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+  </script>
+</body>
+</html>
