@@ -31,3 +31,6 @@ Code : IA Générative (Google Gemini / Claude 3.5 Sonnet)
 Storytelling : IA Textuelle pour les descriptions
 
 Visuels : IA Image Generation Midjourney, Runway
+
+## Licence
+Projet pédagogique - IA M1
